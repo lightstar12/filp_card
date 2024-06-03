@@ -1,0 +1,94 @@
+.playerList1{
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  display: inline-block;
+}
+.playerList2{
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  display: inline-block;
+}
+.gameBoard{
+  background-color: lightgray;
+  border: 4px solid gray;
+  width: 800px;
+  height: 800px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.setCard{
+  width: 100%;
+  height: 100%;
+}
+.card66Div{
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+}
+.card55Div{
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+.card44Div{
+  border: 1px solid black;
+  width: 180px;
+  height: 180px;
+  display: inline-block;
+}
+.player1Div{
+  background-color: lightcoral;
+  border: 5px solid indianred;
+  /* background-color: lightsalmon; */
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
+.player2Div{
+  background-color: lightgreen;
+  border: 5px solid olivedrab;
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
+.player3Div{
+  background-color: lightskyblue;
+  border: 5px solid cornflowerblue;
+  /* background-color: aqua; */
+  width: 200px;
+  height: 195px;
+}
+.player4Div{
+  background-color: palegoldenrod;
+  border: 5px solid tan;
+  width: 200px;
+  height: 195px;
+}
+.userInfo{
+  /* border: 1px solid black; */
+  text-align: center;
+  width: 200px;
+}
+td{
+  border: 1px solid black;
+}
+.playerTd{
+  width: 200px;
+}
+.playerNicknameTd{
+  width: 70%;
+}
+.playerFlipcardCountTd{
+  width: 20%;
+}
+.playerWinCountTd{
+  width: 25%;
+}
+.playerLoseCountTd{
+  width: 25%;
+}
