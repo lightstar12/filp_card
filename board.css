@@ -36,15 +36,34 @@
   display: inline-block;
 }
 .card44Div{
+  background-color: burlywood;
   border: 1px solid black;
   width: 180px;
   height: 180px;
   display: inline-block;
 }
+.selectedUser{
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+  border: linear-gradient(90deg, red 50%, transparent 50%) 0 0 / 12px 3px repeat-x,
+              linear-gradient(90deg, red 50%, transparent 50%) 0 100% / 12px 3px repeat-x,
+              linear-gradient(0, red 50%, transparent 50%) 0 0 / 3px 12px repeat-y,
+              linear-gradient(0, red 50%, transparent 50%) 100% 0 / 3px 12px repeat-y
+              color(srgb 255 160 122);
+
+  outline: none;
+  animation: linearGradientMove 0.2s infinite;
+}
 .player1Div{
-  background-color: lightcoral;
+  background-color: lightsalmon;
   border: 5px solid indianred;
-  /* background-color: lightsalmon; */
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
+.player1Div#turn{
+  background-color: indianred;
   width: 200px;
   height: 195px;
   margin-bottom: 10px;
@@ -56,6 +75,12 @@
   height: 195px;
   margin-bottom: 10px;
 }
+.player2Div#turn{
+  background-color: olivedrab;
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
 .player3Div{
   background-color: lightskyblue;
   border: 5px solid cornflowerblue;
@@ -63,13 +88,25 @@
   width: 200px;
   height: 195px;
 }
+.player3Div#turn{
+  background-color: cornflowerblue;
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
 .player4Div{
   background-color: palegoldenrod;
   border: 5px solid tan;
   width: 200px;
   height: 195px;
 }
-.userInfo{
+.player4Div#turn{
+  background-color: tan;
+  width: 200px;
+  height: 195px;
+  margin-bottom: 10px;
+}
+.playerInfo{
   /* border: 1px solid black; */
   text-align: center;
   width: 200px;
@@ -77,18 +114,9 @@
 td{
   border: 1px solid black;
 }
-.playerTd{
-  width: 200px;
-}
-.playerNicknameTd{
+[class$="NicknameTd"]{
   width: 70%;
 }
-.playerFlipcardCountTd{
+[class$="FlipcardCountTd"]{
   width: 20%;
-}
-.playerWinCountTd{
-  width: 25%;
-}
-.playerLoseCountTd{
-  width: 25%;
 }

@@ -14,142 +14,71 @@
   </div>
   <div align="center">
     <div class="playerList1">
-      <div class="player1Div">
-        <table class="userInfo">
+      <div class="player1Div" id="turn">
+        <table class="playerInfo">
           <tr>
-            <td colspan="4">플레이어 1</td>
+            <td class="player1Unit">플레이어 1</td>
           </tr>
+        </table>
+        <table class="playerInfo">
           <tr>
-            <td colspan="2" style="width: 50%;">닉네임</td>
-            <td colspan="2" style="width: 50%;">하라</td>
+            <td>닉네임</td>
+            <td class="player1NicknameTd">나무아래매미</td>
           </tr>
+        </table>
+        <table class="playerInfo">
           <tr>
-            <td colspan="2">맞춘 카드 수</td>
-            <td colspan="2">0</td>
-          </tr>
-          <tr>
-            <td style="width: 70px;">승</td>
-            <td style="width: 30px;">101</td>
-            <td style="width: 70px;">패</td>
-            <td style="width: 30px;">0</td>
+            <td>맞춘 카드 수</td>
+            <td class="player1FlipcardCountTd">0</td>
           </tr>
         </table>
       </div>
-      <div class="player3Div">
-        <table class="userInfo">
-          <tr>
-            <td class="player1d">플레이어3</td>
-          </tr>
-        </table>
-        <table class="userInfo">
-          <tr>
-            <td>닉네임</td>
-            <td class="playerNicknameTd">나무아래매미미미</td>
-          </tr>
-        </table>
-        <table class="userInfo">
-          <tr>
-            <td>맞춘 카드 수</td>
-            <td class="playerFlipcardCountTd">20</td>
-          </tr>
-        </table>
-        <table class="userInfo">
-          <tr>
-            <td>승</td>
-            <td class="playerWinCountTd">0</td>
-            <td>패</td>
-            <td class="playerLoseCountTd">100</td>
-          </tr>
-        </table>
+      <div class="player3Div" id="none">
       </div>
     </div>
     <div class="gameBoard">
       <div class="setCard">
-      <!-- <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div>
-        <div class="card66Div"></div> -->
-      <!-- <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-        <div class="card55Div"></div>
-      </div> -->
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
-      <div class="card44Div"></div>
+        <div class="card44Div" id="1" value="back"></div>
+        <div class="card44Div" id="1" value="back"></div>
+        <div class="card44Div" id="2" value="back"></div>
+        <div class="card44Div" id="2" value="back"></div>
+        <div class="card44Div" id="3" value="back"></div>
+        <div class="card44Div" id="3" value="back"></div>
+        <div class="card44Div" id="4" value="back"></div>
+        <div class="card44Div" id="4" value="back"></div>
+        <div class="card44Div" id="5" value="back"></div>
+        <div class="card44Div" id="5" value="back"></div>
+        <div class="card44Div" id="6" value="back"></div>
+        <div class="card44Div" id="6" value="back"></div>
+        <div class="card44Div" id="7" value="back"></div>
+        <div class="card44Div" id="7" value="back"></div>
+        <div class="card44Div" id="8" value="back"></div>
+        <div class="card44Div" id="8" value="back"></div>
       </div>
     </div>
     <div class="playerList2">
-      <div class="player2Div"></div>
-      <div class="player4Div"></div>
+      <div class="player2Div" id="none">
+        <table class="playerInfo">
+          <tr>
+            <td class="player2Unit">플레이어 2</td>
+          </tr>
+        </table>
+        <table class="playerInfo">
+          <tr>
+            <td>닉네임</td>
+            <td class="player2NicknameTd">강가위에오리</td>
+          </tr>
+        </table>
+        <table class="playerInfo">
+          <tr>
+            <td>맞춘 카드 수</td>
+            <td class="player2FlipcardCountTd">0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="player4Div" id="none"></div>
     </div>
   </div>
-
+  <script src="board.js"></script>
 </body>
 </html>
