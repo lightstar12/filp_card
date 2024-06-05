@@ -15,12 +15,20 @@ body{
   background: white;
   text-align: center;
 }
-button{
+[class$="SizeBtn"]{
   width: 100px;
-  height: 100px;
-  font-size: 80px;
+  height: 40px;
+  font-size: 20px;
   justify-content: center;
   align-items: center;
+}
+.upSizeBtn{
+  height: 100px;
+  font-size: 40px;
+}
+.downSizeBtn{
+  height: 100px;
+  font-size: 40px;
 }
 span{
   font-size: 80px;

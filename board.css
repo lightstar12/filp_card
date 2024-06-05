@@ -23,37 +23,23 @@
   width: 100%;
   height: 100%;
 }
-.card66Div{
-  border: 1px solid black;
-  width: 120px;
-  height: 120px;
-  display: inline-block;
-}
-.card55Div{
-  border: 1px solid black;
-  width: 150px;
-  height: 150px;
-  display: inline-block;
-}
-.card44Div{
+[class^="cardDiv"]{
   background-color: burlywood;
   border: 1px solid black;
-  width: 180px;
-  height: 180px;
+  margin: 3px;
   display: inline-block;
 }
-.selectedUser{
-  width: 200px;
-  height: 195px;
-  margin-bottom: 10px;
-  border: linear-gradient(90deg, red 50%, transparent 50%) 0 0 / 12px 3px repeat-x,
-              linear-gradient(90deg, red 50%, transparent 50%) 0 100% / 12px 3px repeat-x,
-              linear-gradient(0, red 50%, transparent 50%) 0 0 / 3px 12px repeat-y,
-              linear-gradient(0, red 50%, transparent 50%) 100% 0 / 3px 12px repeat-y
-              color(srgb 255 160 122);
-
-  outline: none;
-  animation: linearGradientMove 0.2s infinite;
+.cardDiv66{
+  width: 120px;
+  height: 120px;
+}
+.cardDiv55{
+  width: 150px;
+  height: 150px;
+}
+.cardDiv44{
+  width: 180px;
+  height: 180px;
 }
 .player1Div{
   background-color: lightsalmon;
@@ -117,6 +103,6 @@ td{
 [class$="NicknameTd"]{
   width: 70%;
 }
-[class$="FlipcardCountTd"]{
+[class$="FlipedCardCountTd"]{
   width: 20%;
 }

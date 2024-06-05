@@ -1,86 +1,134 @@
-const $cardList = document.getElementsByClassName("card44Div");
-var count = 0;
-var cardIdx = [];
-var userturn = 1;
-var flipCardCount = 0;
-let cardIdIdx = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8"];
-let cardColorList = ["red", "purple", "green", "olive", "blue", "orange", "chartreuse", "crimson"];
+// 판의 크기를 가져올 세션
+let myStorage = window.sessionStorage;
+// 판 크기 페이지에서 가져온 판의 크기를 담을 변수
+const boardSize = parseInt(myStorage.getItem("boardSize"));
+// =============== 세션과 세션에서 가져온 변수
+// 어떤 플레이어의 차례인지 저장한 함수(플레이어1을 시작으로 설정한 플레이어 수 만큼 늘어난 후 다시 1로 돌아감)
+let userTurn = 1;
+const maxUserTurn = 2;
+// 플레이어가 카드를 고른 횟수
+let playerSelectCount = 0;
+// 선택한 카드의 인덱스를 담을 리스트
+let selectCardIdx = [];
+// 게임 판에서 뒤집어진 카드의 개수
+let flipedCardCount = 0;
+// =============== 게임에서 필요한 변수
+// 카드들을 놓을 판 Div
+const $setCard = document.querySelector(".setCard");
+// 게임판에 배치된 카드의 수
+const cardCount = boardSize * boardSize;
+// 카드에 Id 값에 넣을 인덱스들 ※필요한 만큼 잘라서 사용(4x4 : 1번째 줄만, 5x5 : 2번째 줄까지, 6x6 : 전부)
+const totalCardIdIdx = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8",
+                 "9", "9", "10", "10", "11", "11", "12", "12",
+                 "13", "13", "14", "14", "15", "15", "16", "16", "17", "17", "18", "18"];
+                 // 카드의 Id값에 따라 부여할 색깔들을 담은 변수
+const cardColorList = ["red", "purple", "green", "olive", "blue", "orange", "chartreuse", "crimson", "darkblue", "darkgoldenrod",
+                     "darkseagreen", "darkslategray", "darkturquoise", "deeppink", "dimgray", "indigo"];
 
-for(let i = 0; i < 10; i++) {
-  const rNum1 = Math.floor(Math.random() * cardIdIdx.length);
-  const rNum2 = Math.floor(Math.random() * cardIdIdx.length);
-
-  const nTmp = cardIdIdx[rNum1];
-  cardIdIdx[rNum1] = cardIdIdx[rNum2];
-  cardIdIdx[rNum2] = nTmp;
-}
-
-for (let i = 0; i < cardIdIdx.length; i++) {
-  document.getElementsByClassName("card44Div")[i].setAttribute("id", cardIdIdx[i]);
-}
-
+let cardIdIdx = totalCardIdIdx.slice(0, cardCount - 1);
+// =============== 카드 조작에 필요한 변수
 // 카드를 뒤집는 함수
 const cardEvent1 = function flipCard() {
+  const $cardList = document.querySelectorAll(`.cardDiv${boardSize}${boardSize}`);
+  // 선택한 카드의 value 값이 "back"이라면
   if(this.getAttribute("value") === "back") {
+    // 선택한 카드의 id값에 맞춰 색깔을 부여함
     this.style.backgroundColor = cardColorList[parseInt(this.getAttribute("id")) - 1];
+    // 선택한 카드의 value값을 "front"로 변경하여 뒤집은 카드를 클릭해도 이벤트가 발생하지 않게 함
     this.setAttribute("value", "front");
+    // 선택한 카드의 인덱스를 저장함
     for (let i = 0; i < $cardList.length; i++) {
       if (this === $cardList[i]) {
-        cardIdx.push(i);
+        selectCardIdx.push(i);
       }
     }
-    count += 1;
+
+    // 카드를 고른 횟수를 증가시킴
+    playerSelectCount += 1;
 
     setTimeout(() => {
-      if (count > 1) {
-        cardEvent2(cardIdx[0],cardIdx[1]);
+      if(playerSelectCount > 1) {
+        cardEvent2($cardList, selectCardIdx[0], selectCardIdx[1]);
         count = 0;
-        cardIdx = [];
+        selectCardIdx = [];
       }
     }, 100);
   }
 }
 
-// 뒤집은 두 카드가 같은 색의 카드인 지 확인 하는 함수
-const cardEvent2 = function checkSameCard(index1, index2) {
-  if($cardList[index1].style.backgroundColor === $cardList[index2].style.backgroundColor) {
+// 선택한 카드들이 같은 색의 카드인지 확인하는 함수
+const cardEvent2 = function checkSameCard(cardList, idx1, idx2) {
+  if(cardList[idx1].getAttribute("id") === cardList[idx2].getAttribute("id")) {
     alert("맞았습니다.");
-    const playerFilpcardCount = document.getElementsByClassName(`player${userturn}FlipcardCountTd`);
-    let collectCount = parseInt(playerFilpcardCount[0].innerText);
+    // 플레이어의 카드 총 맞춘 횟수
+    const playerFlipedCardCount = document.querySelector(`.player${userTurn}FlipedCardCountTd`);
+    // 카드 맞춘 횟수
+    let collectCount = parseInt(playerFlipedCardCount.innerText);
+    // 하나 올림
     collectCount += 1;
-    playerFilpcardCount[0].innerText = collectCount + '';
-    flipCardCount += 2;
+    // 다시 innerText 넣음
+    playerFlipedCardCount.innerText = collectCount + "";
+    // 뒤집혀진 카드 수를 2장 늘림
+    flipedCardCount += 2;
   } else {
     alert("틀렸습니다.");
-    cardEvent3(cardIdx[0]);
-    cardEvent3(cardIdx[1]);
+    cardEvent3(cardList, idx1);
+    cardEvent3(cardList, idx2);
   }
+
   setTimeout(() => {
-    if (flipCardCount === 4 * 4) {
-      alert("게임이 끝났습니다.")
+    if(flipedCardCount === cardCount) {
+      alert("게임이 끝났습니다.");
+      // 새로고침하여 게임을 리셋함
+      location.reload(true);
     }
-    document.getElementsByClassName(`player${userturn}Div`)[0].setAttribute("id", "none");
-    userturn += 1;
-    if (userturn > 2) {
-      userturn = 1;
+    // 다음 차례로 넘김
+    document.querySelector(`.player${userTurn}Div`).setAttribute("id", "none");
+    userTurn += 1;
+    if (userTurn > maxUserTurn) {
+      userTurn = 1;
     }
-    document.getElementsByClassName(`player${userturn}Div`)[0].setAttribute("id", "turn");
+    document.querySelector(`.player${userTurn}Div`).setAttribute("id", "turn");
   }, 100);
 }
 
-// 다른 색의 카드일 때 다시 카드를 뒤집는 함수
-const cardEvent3 = function returnCard(index) {
-  $cardList[index].style.backgroundColor = "burlywood";
-  $cardList[index].setAttribute("value", "back");
+// 다시 카드를 뒤집는 함수
+const cardEvent3 = function returnCard(cardList, idx) {
+  cardList[idx].style.backgroundColor = "burlywood";
+  cardList[idx].setAttribute("value", "back");
 }
+// =============== 카드에 부여할 이벤트
 
-// 카드에 이벤트 리스너 부여
-for(let i = 0; i < $cardList.length; i++) {
-  const card = $cardList[i];
-  card.addEventListener("click", cardEvent1);
-}
-
+// 화면이 실행 될 때 판의 크기를 세션에서 불러오기
 window.onload = function() {
-  selectCardWidth = window.sessionStorage;
-  
+  // 카드 무작위로 섞기
+  for(let i = 0; i < 10; i++) {
+    const rNum1 = Math.floor(Math.random() * cardIdIdx.length);
+    const rNum2 = Math.floor(Math.random() * cardIdIdx.length);
+
+    const nTmp = cardIdIdx[rNum1];
+    cardIdIdx[rNum1] = cardIdIdx[rNum2];
+    cardIdIdx[rNum2] = nTmp;
+  }
+
+  console.log(cardIdIdx);
+
+  let cardIdIdxCount = 0;
+
+  for (let row = 0; row < boardSize; row++) {
+    for (let col = 0; col < boardSize; col++) {
+      // 카드를 한 장씩 생성하고 속성을 부여(class, value, id)
+      const cardDiv = document.createElement("div");
+      cardDiv.setAttribute("class", `cardDiv${boardSize}${boardSize}`);
+      cardDiv.setAttribute("value", "back");
+      cardDiv.setAttribute("id", `${cardIdIdx[cardIdIdxCount]}`);
+      // 카드에 이벤트를 부여
+      cardDiv.addEventListener("click", cardEvent1);
+      // 지정해둔 판에 속성을 지정한 카드를 자식으로 생성
+      $setCard.appendChild(cardDiv);
+      if (col % 2 == 1) {
+        cardIdIdxCount += 1;
+      }
+    }
+  }
 }
