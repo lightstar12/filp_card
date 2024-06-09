@@ -79,7 +79,7 @@ const cardEvent2 = function checkSameCard(cardList, idx1, idx2) {
   }
 
   setTimeout(() => {
-    if(flipedCardCount === cardCount) {
+    if(flipedCardCount === cardCount || (boardSize === 5 && flipedCardCount + 1 === cardCount)) {
       for (let i = 0; i < maxUserTurn; i++) {
         playerScoreList.push(parseInt(document.querySelector(`.player${i + 1}FlipedCardCountTd`).innerText));
       }
