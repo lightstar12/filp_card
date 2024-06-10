@@ -30,7 +30,6 @@ let cardIdIdxList = totalCardIdIdxList.slice(0, cardCount);
 // =============== 카드 조작에 필요한 변수
 // 카드를 뒤집는 함수
 const cardEvent1 = function flipCard() {
-  console.log(this.getAttribute("id"));
   const $cardList = document.querySelectorAll(`.cardDiv${boardSize}${boardSize}`);
   // 선택한 카드의 value 값이 "back"이라면
   if(this.getAttribute("value") === "back") {
