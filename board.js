@@ -118,7 +118,7 @@ window.onload = function() {
   const title = document.querySelector("h1");
   title.innerText = `${boardSize} X ${boardSize} 카드 뒤집기 게임`;
   // 카드 무작위로 섞기
-  for(let i = 0; i < 10; i++) {
+  for(let i = 0; i < 30; i++) {
     const rNum1 = Math.floor(Math.random() * cardIdIdxList.length);
     const rNum2 = Math.floor(Math.random() * cardIdIdxList.length);
 
