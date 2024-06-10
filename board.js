@@ -115,6 +115,8 @@ const cardEvent3 = function returnCard(cardList, idx) {
 
 // 화면이 실행 될 때 판의 크기를 세션에서 불러오기
 window.onload = function() {
+  const title = document.querySelector("h1");
+  title.innerText = `${boardSize} X ${boardSize} 카드 뒤집기 게임`;
   // 카드 무작위로 섞기
   for(let i = 0; i < 10; i++) {
     const rNum1 = Math.floor(Math.random() * cardIdIdxList.length);
