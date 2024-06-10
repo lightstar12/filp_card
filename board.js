@@ -24,7 +24,7 @@ const totalCardIdIdxList = ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6
                  "13", "13", "14", "14", "15", "15", "16", "16", "17", "17", "18", "18"];
                  // 카드의 Id값에 따라 부여할 색깔들을 담은 변수
 const cardColorList = ["red", "purple", "green", "olive", "blue", "orange", "chartreuse", "crimson", "darkblue", "darkgoldenrod",
-                     "darkseagreen", "darkslategray", "darkturquoise", "deeppink", "dimgray", "indigo"];
+                     "darkseagreen", "darkslategray", "darkturquoise", "deeppink", "dimgray", "indigo", "black", "powderblue"];
 
 let cardIdIdxList = totalCardIdIdxList.slice(0, cardCount);
 // =============== 카드 조작에 필요한 변수
@@ -118,7 +118,7 @@ window.onload = function() {
   const title = document.querySelector("h1");
   title.innerText = `${boardSize} X ${boardSize} 카드 뒤집기 게임`;
   // 카드 무작위로 섞기
-  for(let i = 0; i < 30; i++) {
+  for(let i = 0; i < 100; i++) {
     const rNum1 = Math.floor(Math.random() * cardIdIdxList.length);
     const rNum2 = Math.floor(Math.random() * cardIdIdxList.length);
 
